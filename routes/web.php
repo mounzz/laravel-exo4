@@ -8,16 +8,16 @@ Route::get('/', function () {
 
 Route::get('/date', function () {
     $dateDuJour = date('d-m-y');
-    return view('pages.date', compact('dateDuJour'));
+    date_default_timezone_set("Europe/Brussels");
+    $heure = date('H:i', time());
+    return view('pages.date', compact('dateDuJour', 'heure'));
 });
 
 
 Route::get('/fruits', function () {
     $panier = array('mangue', 'pêche', 'pomme', 'banane');
-    echo $lgPanier = count($panier);
-    foreach($panier as $value){
-        echo "$value - ";
-    }
-    return view('pages.fruits', compact('panier', 'value', 'lgPanier'));
+    $lgPanier = count($panier);
+
+    return view('pages.fruits', compact('panier', 'lgPanier'));
 });
 
